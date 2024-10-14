@@ -21,18 +21,18 @@ jobs:
         npm install
     - name: Build project
       run: npm run docusaurus build
+    - name: Add server to known_hosts
+      run: |
+        mkdir -p ~/.ssh
+        ssh-keyscan -H ${{ secrets.HOST_ADDRESS }} >> ~/.ssh/known_hosts
 
-    # - name: Add server to known_hosts
-    #   run: |
-      # ssh-keyscan -H ${{ secrets.HOST_ADDRESS }} >> ~/.ssh/known_hosts
     - name: Deploy to Server test
       env:
         SSH_PRIVATE_KEY: ${{ secrets.HOST_SSH_KEY }}
         HOST_ADDRESS: ${{ secrets.HOST_ADDRESS }}
         HOST_USERNAME: ${{ secrets.HOST_USERNAME }}
       run: |
-        mkdir -p ~/.ssh
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        ssh -v -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST_ADDRESS }} true
+        # ssh -v -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST_ADDRESS }} true
         rsync -avz --delete ./build/* $HOST_USERNAME@$HOST_ADDRESS:/var/www/html/
