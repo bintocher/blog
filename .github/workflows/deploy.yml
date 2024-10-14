@@ -19,7 +19,6 @@ jobs:
         sudo apt-get install -y nodejs
         npm config set registry https://registry.npmjs.org/
         npm install
-
     - name: Build project
       run: npm run docusaurus build
 
@@ -27,8 +26,6 @@ jobs:
       run: |
         mkdir -p ~/.ssh
         ssh-keyscan -H ${{ secrets.HOST_ADDRESS }} >> ~/.ssh/known_hosts
-        ssh -v -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST_ADDRESS }} true
-
     - name: Deploy to Server test
       env:
         SSH_PRIVATE_KEY: ${{ secrets.HOST_SSH_KEY }}
@@ -36,6 +33,6 @@ jobs:
         HOST_USERNAME: ${{ secrets.HOST_USERNAME }}
       run: |
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-        # ssh -v -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST_ADDRESS }} true
         chmod 600 ~/.ssh/id_rsa
+        ssh -v -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST_ADDRESS }} true
         rsync -avz --delete ./build/* $HOST_USERNAME@$HOST_ADDRESS:/var/www/html/
