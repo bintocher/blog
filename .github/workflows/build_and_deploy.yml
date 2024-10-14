@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  SSH_PRIVATE_KEY: ${{ secrets.HOST_SSH_KEY }}
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
