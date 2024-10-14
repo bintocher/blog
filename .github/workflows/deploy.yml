@@ -21,13 +21,13 @@ jobs:
         npm install
 
     - name: Build project
-      run: npm run build
+      run: npm run docusaurus build
 
     - name: Deploy to Server
       env:
         SSH_PRIVATE_KEY: ${{ secrets.HOST_SSH_KEY }}
-        SERVER_HOST: ${{ secrets.HOST_ADDRESS }}
-        SERVER_USER: ${{ secrets.HOST_USERNAME }}
+        HOST: ${{ secrets.HOST_ADDRESS }}
+        USER: ${{ secrets.HOST_USERNAME }}
       run: |
         mkdir -p ~/.ssh
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
