@@ -13,7 +13,7 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://github.com/bintocher/blog',
+  url: 'https://github.com/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -33,19 +33,11 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
-
   presets: [
     [
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
-        // docs: {
-        //   sidebarPath: './sidebars.js',
-        //   // Please change this to your repo.
-        //   // Remove this to remove the "edit this page" links.
-        //   editUrl:
-        //     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        // },
         docs: false,
         blog: {
           routeBasePath: '/',
@@ -53,15 +45,22 @@ const config = {
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true,
+            // createFeedItems: async (params) => {
+            //   const {blogPosts, defaultCreateFeedItems, ...rest} = params;
+            //   return defaultCreateFeedItems({
+            //     // keep only the 10 most recent blog posts in the feed
+            //     blogPosts: blogPosts.filter((item, index) => index < 10),
+            //     ...rest,
+            //   });
+            // },
           },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // editUrl:
-          //   'https://github.com/bintocher/blog',
-          // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
+          postsPerPage: 2,
+          blogTitle: 'Chernov blog',
+          blogDescription: 'Blog',
+          blogSidebarCount: 5,
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -76,70 +75,75 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'My Site',
+        title: 'Public Chernov blog',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg',
         },
-        items: [
-          {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Tutorial',
-          },
-          {to: '/blog', label: 'Blog', position: 'left'},
-          {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
-            position: 'right',
-          },
-        ],
+        // items: [
+        //   {
+        //     type: 'docSidebar',
+        //     sidebarId: 'tutorialSidebar',
+        //     position: 'left',
+        //     label: 'Tutorial',
+        //   },
+        //   // {to: '/blog', label: 'Blog', position: 'left'},
+        //   // {
+        //   //   href: 'https://github.com/facebook/docusaurus',
+        //   //   label: 'GitHub',
+        //   //   position: 'right',
+        //   // },
+        // ],
       },
       footer: {
-        style: 'dark',
+        style: 'light',
         links: [
           {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Tutorial',
-                to: '/docs/intro',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
+            title: 'Main',
             items: [
               {
                 label: 'Blog',
-                to: '/blog',
+                to: '/',
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                label: 'Telegram',
+                to: 'https://t.me/chernovdev',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        //   // {
+        //   //   title: 'Community',
+        //   //   items: [
+        //   //     {
+        //   //       label: 'Stack Overflow',
+        //   //       href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+        //   //     },
+        //   //     {
+        //   //       label: 'Discord',
+        //   //       href: 'https://discordapp.com/invite/docusaurus',
+        //   //     },
+        //   //     {
+        //   //       label: 'Twitter',
+        //   //       href: 'https://twitter.com/docusaurus',
+        //   //     },
+        //   //   ],
+        //   // },
+        //   // {
+        //   //   title: 'More',
+        //   //   items: [
+        //   //     {
+        //   //       label: 'Blog',
+        //   //       to: '/blog',
+        //   //     },
+        //   //     {
+        //   //       label: 'GitHub',
+        //   //       href: 'https://github.com/facebook/docusaurus',
+        //   //     },
+        //   //   ],
+        //   // },
+        // ],
+        copyright: `Copyright © 2018 - ${new Date().getFullYear()} Chernov Stanislav`,
       },
       prism: {
         theme: prismThemes.github,

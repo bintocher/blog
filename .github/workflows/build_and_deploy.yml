@@ -1,0 +1,30 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Node.js and dependencies
+        run: |
+          curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+          sudo apt-get install -y nodejs
+          npm config set registry https://registry.npmjs.org/
+          npm install
+
+      - name: Build и deploy
+        run: |
+          npm run docusaurus build
+          HOST= ${{ secrets.HOST_ADDRESS }}
+          USER= ${{ secrets.HOST_USERNAME }}
+          rsync -avz --delete ./build/* $USER@$HOST:/var/www/html/
+
+
+          # ${{ secrets.HOST_SSH_KEY }}
