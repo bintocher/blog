@@ -23,13 +23,17 @@ jobs:
     - name: Build project
       run: npm run docusaurus build
 
+    - name: Add server to known_hosts
+      run: |
+        mkdir -p ~/.ssh
+        ssh-keyscan -H ${{ secrets.HOST_ADDRESS }} >> ~/.ssh/known_hosts
+
     - name: Deploy to Server
       env:
         SSH_PRIVATE_KEY: ${{ secrets.HOST_SSH_KEY }}
         HOST_ADDRESS: ${{ secrets.HOST_ADDRESS }}
         HOST_USERNAME: ${{ secrets.HOST_USERNAME }}
       run: |
-        mkdir -p ~/.ssh
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         rsync -avz --delete ./build/* $HOST_USERNAME@$HOST_ADDRESS:/var/www/html/
