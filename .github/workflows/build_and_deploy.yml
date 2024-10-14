@@ -28,6 +28,3 @@ jobs:
           HOST= ${{ secrets.HOST_ADDRESS }}
           USER= ${{ secrets.HOST_USERNAME }}
           rsync -avz --delete ./build/* $USER@$HOST:/var/www/html/
-
-
-          # ${{ secrets.HOST_SSH_KEY }}
