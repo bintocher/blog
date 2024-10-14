@@ -33,6 +33,12 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
+
+  plugins: [
+    ['docusaurus-plugin-yandex-metrica', { counterID: '98633687' }],
+    'docusaurus-plugin-image-zoom'
+  ],
+
   presets: [
     [
       'classic',
@@ -45,22 +51,27 @@ const config = {
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true,
-            // createFeedItems: async (params) => {
-            //   const {blogPosts, defaultCreateFeedItems, ...rest} = params;
-            //   return defaultCreateFeedItems({
-            //     // keep only the 10 most recent blog posts in the feed
-            //     blogPosts: blogPosts.filter((item, index) => index < 10),
-            //     ...rest,
-            //   });
-            // },
           },
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
-          postsPerPage: 2,
+          postsPerPage: 10,
           blogTitle: 'Chernov blog',
           blogDescription: 'Blog',
-          blogSidebarCount: 5,
+          blogSidebarCount: 10,
+          // blogSidebarCount: 'ALL',
+        },
+        sitemap: {
+          lastmod: 'date',
+          changefreq: 'weekly',
+          priority: 0.5,
+          // ignorePatterns: ['/tags/**'],
+          filename: 'sitemap.xml',
+          createSitemapItems: async (params) => {
+            const {defaultCreateSitemapItems, ...rest} = params;
+            const items = await defaultCreateSitemapItems(rest);
+            return items.filter((item) => !item.url.includes('/page/'));
+          },
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -80,20 +91,6 @@ const config = {
           alt: 'My Site Logo',
           src: 'img/logo.svg',
         },
-        // items: [
-        //   {
-        //     type: 'docSidebar',
-        //     sidebarId: 'tutorialSidebar',
-        //     position: 'left',
-        //     label: 'Tutorial',
-        //   },
-        //   // {to: '/blog', label: 'Blog', position: 'left'},
-        //   // {
-        //   //   href: 'https://github.com/facebook/docusaurus',
-        //   //   label: 'GitHub',
-        //   //   position: 'right',
-        //   // },
-        // ],
       },
       footer: {
         style: 'light',
@@ -112,37 +109,6 @@ const config = {
             ],
           },
         ],
-        //   // {
-        //   //   title: 'Community',
-        //   //   items: [
-        //   //     {
-        //   //       label: 'Stack Overflow',
-        //   //       href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-        //   //     },
-        //   //     {
-        //   //       label: 'Discord',
-        //   //       href: 'https://discordapp.com/invite/docusaurus',
-        //   //     },
-        //   //     {
-        //   //       label: 'Twitter',
-        //   //       href: 'https://twitter.com/docusaurus',
-        //   //     },
-        //   //   ],
-        //   // },
-        //   // {
-        //   //   title: 'More',
-        //   //   items: [
-        //   //     {
-        //   //       label: 'Blog',
-        //   //       to: '/blog',
-        //   //     },
-        //   //     {
-        //   //       label: 'GitHub',
-        //   //       href: 'https://github.com/facebook/docusaurus',
-        //   //     },
-        //   //   ],
-        //   // },
-        // ],
         copyright: `Copyright © 2018 - ${new Date().getFullYear()} Chernov Stanislav`,
       },
       prism: {

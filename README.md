@@ -1,4 +1,4 @@
-[![Build and Deploy](https://github.com/bintocher/blog/actions/workflows/build_and_deploy.yml/badge.svg)](https://github.com/bintocher/blog/actions/workflows/build_and_deploy.yml)
+[![Deploy](https://github.com/bintocher/blog/actions/workflows/deploy.yml/badge.svg)](https://github.com/bintocher/blog/actions/workflows/deploy.yml)
 # Website
 
 Public blog by Chernov Stanislav
