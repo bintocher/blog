@@ -26,7 +26,6 @@ jobs:
     - name: Add server to known_hosts
       run: |
         mkdir -p ~/.ssh
-        ssh -v -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST_ADDRESS }} true
         ssh-keyscan -H ${{ secrets.HOST_ADDRESS }} >> ~/.ssh/known_hosts
         ssh -v -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST_ADDRESS }} true
 
@@ -37,5 +36,6 @@ jobs:
         HOST_USERNAME: ${{ secrets.HOST_USERNAME }}
       run: |
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        # ssh -v -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST_ADDRESS }} true
         chmod 600 ~/.ssh/id_rsa
         rsync -avz --delete ./build/* $HOST_USERNAME@$HOST_ADDRESS:/var/www/html/
