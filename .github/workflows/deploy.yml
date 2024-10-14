@@ -26,10 +26,10 @@ jobs:
     - name: Deploy to Server
       env:
         SSH_PRIVATE_KEY: ${{ secrets.HOST_SSH_KEY }}
-        HOST: ${{ secrets.HOST_ADDRESS }}
-        USER: ${{ secrets.HOST_USERNAME }}
+        HOST_ADDRESS: ${{ secrets.HOST_ADDRESS }}
+        HOST_USERNAME: ${{ secrets.HOST_USERNAME }}
       run: |
         mkdir -p ~/.ssh
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        rsync -avz --delete ./build/* $USER@$HOST:/var/www/html/
+        rsync -avz --delete ./build/* $HOST_USERNAME@$HOST_ADDRESS:/var/www/html/
