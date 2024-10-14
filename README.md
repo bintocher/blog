@@ -20,5 +20,3 @@ npm run docusaurus build
 ```
 npm run docusaurus serve
 ```
-
-test build
