@@ -28,7 +28,7 @@ jobs:
         mkdir -p ~/.ssh
         ssh-keyscan -H ${{ secrets.HOST_ADDRESS }} >> ~/.ssh/known_hosts
 
-    - name: Deploy to Server
+    - name: Deploy to Server test
       env:
         SSH_PRIVATE_KEY: ${{ secrets.HOST_SSH_KEY }}
         HOST_ADDRESS: ${{ secrets.HOST_ADDRESS }}
