@@ -36,4 +36,5 @@ jobs:
       run: |
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
+        ssh -v -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST_ADDRESS }} true
         rsync -avz --delete ./build/* $HOST_USERNAME@$HOST_ADDRESS:/var/www/html/
