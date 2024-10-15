@@ -2,7 +2,7 @@
 title: Qlik products download or Qlik Sense Desktop trial- how?
 authors: [chernov]
 date: 2024-10-15
-tags: [qlik]
+tags: [qlik, trial, download, qliksense, qlikview, nprinting, qlik github, qsd, qsd trial]
 ---
 
 Where can I find downloads for Qlik products and obtain a trial license for Qlik Sense Desktop?
