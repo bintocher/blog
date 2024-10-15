@@ -25,6 +25,7 @@ const config = {
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
+  // onUntruncatedBlogPosts: 'throw',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -36,7 +37,13 @@ const config = {
 
   plugins: [
     ['docusaurus-plugin-yandex-metrica', { counterID: '98633687' }],
-    'docusaurus-plugin-image-zoom'
+    'docusaurus-plugin-image-zoom',
+    [ require.resolve('docusaurus-lunr-search'), {
+      languages: ['en'], // language codes
+      indexBaseUrl: true,
+      highlightResult: true,
+      maxHits: 10
+    }],
   ],
 
   presets: [
