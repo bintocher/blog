@@ -8,20 +8,11 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Public Chernov blog',
+  title: 'Chernov blog - HOME',
   tagline: 'Qlik - Develop, Deploy, Discover',
   favicon: 'img/favicon.ico',
-
-  // Set the production url of your site here
   url: 'https://github.com/',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'bintocher', // Usually your GitHub org/user name.
-  projectName: 'blog', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -53,6 +44,7 @@ const config = {
       ({
         docs: false,
         blog: {
+          // sidebarPath: './sidebars.js',
           routeBasePath: '/',
           showReadingTime: true,
           feedOptions: {
@@ -64,7 +56,7 @@ const config = {
           onUntruncatedBlogPosts: 'warn',
           postsPerPage: 10,
           blogTitle: 'Chernov blog',
-          blogDescription: 'Blog',
+          blogDescription: 'Qlik ambassador',
           blogSidebarCount: 10,
           // blogSidebarCount: 'ALL',
         },
@@ -93,11 +85,39 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'Public Chernov blog',
+        title: 'Chernov blog',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg',
         },
+        items: [
+          { to: '/', label: 'Home', position: 'left' },
+          { to: '/tags', label: 'Tags', position: 'left' },
+          { to: '/qlik-download', label: 'Download Qlik', position: 'left' },
+          { type: 'dropdown', label: 'Telegram', position: 'left',
+            items: [
+              { to: 'https://t.me/qlikchat', label: '@qlikchat'},
+              { to: 'https://t.me/chernovqlik', label: '@chernovqlik' },
+              { to: 'https://t.me/qliknews', label: '@qliknews' },
+            ]
+          },
+          { type: 'dropdown', label: 'Qlik links', position: 'right',
+            items: [
+              { to: 'https://qlik.com', label: 'Qlik.com' },
+              { to: 'https://community.qlik.com', label: 'Community' },
+              { to: 'https://qlik.dev', label: 'Qlik Developer portal' },
+              { to: 'https://github.com/qlik-download/', label: 'Github releases' },
+            ]
+          },
+          // {
+          //   type: 'localeDropdown',position: 'right',
+          // },
+          {
+            href: 'https://github.com/bintocher/blog',
+            label: 'GitHub',
+            position: 'right',
+          },
+        ],
       },
       footer: {
         style: 'light',
