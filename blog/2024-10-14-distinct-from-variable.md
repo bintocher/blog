@@ -1,5 +1,4 @@
 ---
-# slug: welcome
 title: Different values from variable
 authors: [chernov]
 date: 2024-10-14
