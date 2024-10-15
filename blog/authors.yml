@@ -1,9 +1,11 @@
 chernov:
   name: Stanislav Chernov
-  title: Qlik architector
+  title: Qlik ambassdor
   url: https://github.com/bintocher
   image_url: https://github.com/bintocher.png
   page: true
   socials:
     github: bintocher
-    channel: https://t.me/chernovdev
+    telegram channel: https://t.me/chernovqlik
+    linkedin: chernovdev
+    site: https://chernov.blog
