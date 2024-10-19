@@ -1,12 +1,11 @@
 ---
 title: Remove duplicated rows by index field from a table - how?
 authors: [chernov]
-date: 2024-10-20
+date: 2024-10-19
 tags: [qlik, qliksense, distinct, inline table, distinct rows, table]
-draft: true
 ---
 
-![image](/img/2024-10-20/pgljmafPye.png)
+![image](/img/2024-10-19/pgljmafPye.png)
 
 How?
 
